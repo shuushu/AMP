@@ -1,0 +1,19 @@
+{
+  "name": "AMP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "express": "^4.15.3",
+    "mustache": "^2.3.0",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "app": "browser-sync start --proxy localhost:4000 --files \"src/*.html\"",
+    "dev": "nodemon server/db.js"  
+  },
+  "author": "",
+  "license": "ISC"
+}
