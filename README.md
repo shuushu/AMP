@@ -1,4 +1,6 @@
 # AMP
 google AMP Study
 ## envirement
-> express, mySql, AMP
+backend : express(nodemon), mySql, 
+client : AMP(browser-sync)
+
