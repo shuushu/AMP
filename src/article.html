@@ -96,6 +96,10 @@
     padding: 10px;
     list-style-type: none;
   }
+  .summary{
+    white-space: pre-line;
+    width: 100%;
+  }
 </style>
 </head>
 <body>
@@ -109,15 +113,17 @@
             <div id="post{{cnt}}" data-sort-time="20170725043417">
               <div class="ampstart-card m1 blog">
                 <section class="heading">
-                  <h1>An AMP Live Blog / {{post}}</h1>
+                  <h1>{{subject}}</h1>
                   <p><small class="date">{{writeTime}}</small></p>
                   <p><small>by Chiara Chiappini</small></p>
-                  <p id="summary">This is a sample article demonstrating how to write a live blog in AMP. It demonstrates the usage of amp-live-list component which allows to create live blogs.</p>
+                  <pre class="summary">
+                  {{contents}}
+                  </pre>
                 </section>
 
-                <amp-img src="{{thumbnail}}" width="300" height="200">
+                <amp-img src="{{thumbnail}}" layout="responsive" width="300" height="200">
                 </amp-img>
-                <h4 class="title">Green landscape</h4>
+                <h4 class="title">{{subject}}</h4>
                 <p class="date">04:34:17</p>
                 <p class="text">A green landscape with trees.</p>
                 <p class="social-share">
