@@ -3,7 +3,7 @@ var app = express();
 var mysql = require('mysql');
 let http = require('http');
 let server = http.Server(app);
-
+var bodyParser = require('body-parser');
 
 var connection = mysql.createConnection({
   host     : 'gnscjfdl.cafe24.com',
@@ -20,29 +20,49 @@ connection.connect(function(err) {
    console.log('connected as id ' + connection.threadId);
 });
 
+app.use(bodyParser.text({ type: 'text/html' }))
 
 app.get('/search', function(req, res) {
 	var arr = {
-		items: []
+		items: [],
 	}
-	
-	connection.query('SELECT * FROM g4_board_file', function (error, results, fields) {
+	var getQuery =  'SELECT g4_write_portfolio.wr_subject, ' + 
+					'g4_write_portfolio.wr_datetime, ' + 
+					'g4_write_portfolio.wr_content, ' + 
+					'g4_board_file.bf_file ' +
+					'FROM g4_write_portfolio ' +
+					'LEFT OUTER JOIN g4_board_file ON (g4_board_file.wr_id = g4_write_portfolio.wr_id) '
+
+	connection.query(getQuery, function (error, results, fields) {
+		var regex = /(<([^>]+)>)/ig;
+
 		if (error) throw error;
-		//connection.end();		
+
 		for (var i in results){
+
+			let str = results[i].wr_content.toString();
+			let result = str.replace(regex, "");
+
 			var data = {
-				thumbnail: 'http://gnscjfdl.cafe24.com/bbs/data/file/portfolio/' + results[i].bf_file
+				subject: results[i].wr_subject.toString(),
+				writeTime: results[i].wr_datetime.toString(),
+				contents: result,
+				thumbnail: "http://gnscjfdl.cafe24.com/bbs/data/file/portfolio/" + results[i].bf_file
 			}
-			arr.items[i] = data;
-		} 
+
+			if('' + results[i].bf_file != 'null') {
+				arr.items.push(data);
+			}
+		
+		}
+
 		res.send(arr);
 	});
-
-    //res.sendfile('./src/article.html');
 });
+
 
 app.use('/', function(req, res){
 	res.sendfile('./src/article.html')
 });
 // Server ON:3500
-server.listen(4000, () => console.log('listening on *:4000'));
+server.listen(5000, () => console.log('listening on *:5000'));
