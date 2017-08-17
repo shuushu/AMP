@@ -1,0 +1,572 @@
+<!doctype html>
+<html amp lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <title>AMP - 네이트 뉴스</title>  
+  <!-- ## Setup -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <!-- Import the `amp-image-lightbox` component -->
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
+    <!-- Import the `amp-sidebar` component -->
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>  
+    <!-- Import the `amp-social-share` component -->
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <!--  Import the amp-iframe component in the header. -->
+    <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+
+
+<!-- Reagacy -->
+<link rel="shortcut icon" href="http://mdev.news.nate.com/icon/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="http://news.nateimg.co.kr/etc/ui/images/mnews/common/nate_news_114.png?v=20140911" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+<link href="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/m/release/css/common.css" rel="stylesheet" type="text/css" />
+<link href="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/m/release/css/reply.css" rel="stylesheet" type="text/css" />
+<link href="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/m/release/css/ad_style.css" rel="stylesheet" type="text/css" />
+<!-- 기사뷰 DEV JS -->
+<script type="text/javascript" src="http://m.comm.news.nate.com/userJS?oj=1&amp;r=509607600"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/jquery-1.8.3.min.js?201603311310"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/common.js?201603311310"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/mobile.js?201603311310"></script>
+<!-- 기사뷰 UI JS -->
+<script type="text/javascript" src="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/m/release/js/lib/plast-low.js"></script>
+<script type="text/javascript" src="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/m/release/js/lib/media.js"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/menu.js?201604040920"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/flickLib/MNComponent.js?201603311310"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/idol_scoller.js?201603311310"></script>
+<script type="text/javascript" src="http://m.news.nate.com/js/reply.js?201607191430"></script>
+<script type="text/javascript">
+  //test
+  var sendSns = function(target){
+    var send_sns = document.getElementsByTagName('div');
+    for(var i=0; i<send_sns.length; i++){
+      if(send_sns[i].className == 'send_sns'){
+        send_sns[i].style.display = 'none'
+      }
+    }
+
+    if(target.nextSibling.nodeType == 3){
+      if(target.nextSibling.nextSibling.style.display == 'none'){
+        target.nextSibling.nextSibling.style.display = 'block'
+      }
+    }else{
+      if(target.nextSibling.style.display == 'none'){
+        target.nextSibling.style.display = 'block'
+      }
+    }
+  };
+
+  //공감한마디
+  var socialCmt = function(elem){
+    var target = elem.parentNode.parentNode.nextSibling.nextSibling;
+    if(target.style.display == 'none'){
+      target.style.display = 'block'
+    }else{
+      target.style.display = 'none'
+    }
+  };
+
+    //통계코드 테스트용 라이브시 삭제 필요
+    function olapclick(value){
+        console.log(value);
+    }
+
+    // HTML5 manifest
+    window.addEventListener('load', function(e) {
+        window.applicationCache.addEventListener('updateready', function(e) {
+            if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                window.applicationCache.swapCache();
+
+                if (confirm('A new version of this site is available. Load it?')) {
+                    window.location.reload();
+                }
+            } else {}
+        },false);
+    },false);
+
+</script>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
+  <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+<style amp-custom>
+figure{margin: 0;padding: 0;border: 0;}
+amp-sidebar {width: 100%;max-width: 100vw!important;height: 44px;}
+.amp_b_search {
+    top: 2px;
+    display: block;
+    overflow: hidden;
+    text-indent: -999em;
+    background: url(http://10.22.1.116:8070/trunk/_nate/media/new_trunk/images/mobile/img/common/ir_v20170404.png) -52px -633px no-repeat;
+    background-size: 320px auto;
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+.snsBtn a{vertical-align: top !important;}
+.i-amphtml-element>[overflow]{background-color: #fff;overflow: hidden;}
+.news_cmt:after{height: 9px;}
+.new_photoList .items{width: 49%;}
+.new_photoList .items:nth-child(odd){float: left;}
+.new_photoList .items:nth-child(even){float: right;}
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <header id="header" role="banner">
+  <div class="header_top">
+    <div id="head_wrap">
+      <h1><a href="../" class="logo">네이트 NATE</a></h1>
+      <h2 class="t_news"><a href="../sisa/home.html">뉴스</a></h2>
+      <div class="sub_sibling">
+        <h2 class="t_sports_sub"><a href="../sports/home.html">스포츠</a></h2>
+        <h2 class="t_ent_sub"><a href="../ent/home.html">연예</a></h2>
+        <a class="amp_b_search" role="search" href="#" on="tap:sidebar.toggle">검색창 열기</a>         
+      </div>
+    </div>
+
+
+    <amp-sidebar id="sidebar" layout="nodisplay" side="right">
+      <amp-img class="amp-close-image" src="https://ampbyexample.com/img/ic_close_black_18dp_2x.png" width="20" height="20" alt="close sidebar" on="tap:sidebar.close" role="button" tabindex="0"></amp-img>
+      <div id="search_field" class="head-function">
+        <form action="" name="" >
+          <fieldset>
+          <legend id="search_btn">검색</legend>
+            <p class="field-wrap">
+              <span class="ip_box">
+                <input type="text" title="검색어 입력" id="q_search" placeholder="검색" autocapitalize="off" autocomplete="off" class="text" name="q_search">
+                <a id="ico_del_tx" class="ic_del" href="#" title="입력한 내용 지우기">입력한 내용 지우기</a>
+              </span>
+            </p>
+            <input type="submit" class="img" value="검색">
+            <a class="btn_cls_search" href="#" on="tap:sidebar.close" role="button"><span id="clsSearch">닫기</span></a>
+          </fieldset>
+        </form>
+      </div>
+    </amp-sidebar>
+
+
+
+  </div>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(){
+    schBox();
+  });
+  </script>
+  <!-- 기사뷰일 떄  data-floating="true" 가 설정 됨 -->
+  <div id="lnbContainer" data-floating="false">
+    <nav class="lnb flick sisa" role="navigation">
+      <ul style="min-width:100%;">
+        <li><a href="home.html#0" class="on">홈</a></li>
+        <li><a href="ranking.html#1">랭킹뉴스</a></li>
+        <li><a href="issuepick.html#2">이슈픽</a></li>
+        <li><a href="radio.html#4">라디오</a></li>
+      </ul>
+      <!--<li><a href="../nateq/home.html">네이트Q</a></li>-->
+    </nav>
+  </div>
+</header>
+<script script="type/javascript">
+//<![CDATA[
+// 해당코드는 라이브와 관계 없는 코드이며, 산출물 편의상 작성한 코드 입니다.
+    var isActive = window.location.hash;
+        isActive = isActive.substr(1);
+    $('.snb li').eq(isActive).find('a').addClass('on');
+//]]>
+</script>
+    <hr />
+    <!-- contents -->
+    <section id="contents" role="main">
+      <div class="responsive_wrap">
+        <!-- Responsive_left -->
+        <section class="rwd_left">
+          <div class="news_view"><!-- 카툰일경우 <div class="news_view viewCartoon"> 변경 -->
+            <header>
+              <p class="news_cate"><a href="#">정치</a></p>
+              <h1 id="artcTitle">김무성 대표, 사진 찍히는 것 정말 몰랐을까?</h1>
+              <div class="medium">
+                <div class="author">
+                  <em><b>아이아투데이</b><span>2013-01-17 20:16</span></em>
+                  <em><b>최종수정</b><span>2013-01-17 20:16</span></em>
+                </div>                
+              </div>
+              <div class="font_size">
+                <a href="#" class="font_minus" onclick="fontFunction.fontSize(this); return false;"><span class="hide">작게</span></a>
+                <a href="#" class="font_plus" onclick="fontFunction.fontSize(this); return false;"><span class="hide">크게</span></a>
+              </div>
+              <!-- UIDEV-386:S font popup UI -->
+              <div id="layer_txt_size" class="init">
+                  <div class="popup_font">
+                    <ul class="font_dept">
+                        <li class="dept1">1단계</li>
+                        <li class="dept2">2단계</li>
+                        <li class="dept3">3단계</li>
+                        <li class="dept4">4단계</li>
+                    </ul>
+                    <label>글씨 크기가 커졌습니다</label>
+                  </div>
+               </div>   
+              <!-- UIDEV-386:E /-->
+              <ul class="cmt_count">
+                <li><a href="#">댓글 <em>198</em></a></li>                
+              </ul>
+            </header>
+            
+            <article>
+              <div id="txt_size" class="view_cont">
+                  <h5>[박재홍의 뉴스쇼-행간]</h5>
+                  <b>[CBS 박재홍의 뉴스쇼]</b> 
+                  <figure>
+                    <amp-img on="tap:lightbox1"
+                            role="button"
+                            tabindex="0"
+                            src="http://news.nateimg.co.kr/orgImg/cb/2015/01/14/20150114082848789748.jpg"
+                            alt="Picture of a dog"
+                            title="Picture of a dog, view in lightbox"
+                            layout="responsive"
+                            width="500"
+                            height="333"></amp-img>
+                    <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  </figure>
+                  <p>
+                    ■ 방송 : CBS 라디오 FM 98.1 (07:30~09:00) <br>
+                    ■ 진행 : 박재홍 앵커 <br>
+                    ■ 대담 : 김성완 (시사평론가)
+                  </p>
+                  <p>◇ 박재홍> 김성완의 행간. 시사평론가 김성완 씨 나와계십니다. 어서 오십시오.</p>
+                  <p>◆ 김성완> 네, 안녕하세요.</p>
+                  <p>◇ 박재홍> 오늘 다룰 주제로 넘어가겠습니다.</p>
+                  <p>◆ 김성완> '청와대 문건 파동 배후는 K, Y. 내가 꼭 밝힌다, 두고 봐라 곧 발표가 있을 것이다.' 새누리당 김무성 대표의 수첩에 적힌 내용인데요. 어제 새누리당 내에서 이 수첩 속 이니셜이 누구인지 숨바꼭질이 이어졌습니다. '김무성은 사진찍히는 것을 정말 몰랐을까' 그 행간을 좀 살펴볼까 합니다.</p>
+                  <dl>
+                    <dt><a href="#">[박재홍의 뉴스쇼 프로그램 홈 바로가기]</a></dt>
+                    <dd><a href="#">● 경찰 "안산 인질범, 어젯밤 집에 들어가 남편 살해"</a></dd>
+                    <dd><a href="#">● 이번엔 인질극…인질 2명 사망 참극으로 끝나(종합)</a></dd>
+                    <dd><a href="#">● 따로 사는 부모님 기본공제는 어떻게?…자주 묻는 연말정산 사례</a></dd>
+                    <dd><a href="#">● 쓰러진 이청용, 결국 1경기로 아시안컵 끝났다</a></dd>
+                    <dd><a href="#">● 수첩 속 배후 K·Y는 김무성, 유승민</a></dd>
+                  </dl>
+                  <p>저작권자 ⓒ CBS 노컷뉴스(<a href="#">www.nocutnews.co.kr</a>) 무단전재 및 재배포 금지</p>
+              </div>              
+              <!-- UIDEV-386:S up down Button UI -->        
+              <div class="upDown">
+                <ul>
+                  <li id="up_cnt">
+                    <a href="javascript:" onclick="testEvent(this)">
+                      <span class="up img"></span><span>올려<em>2</em></span>
+                    </a>
+                  </li>
+                  <li id="down_cnt">
+                    <a href="javascript:" onclick="testEvent(this)">
+                      <span class="down img"></span><span>내려<em>0</em></span>
+                    </a>
+                  </li>
+                </ul>
+                <script>
+                  // UIDEV-386 TEST EVENT
+                  function testEvent(t){
+                    t.parentNode.className = 'active';
+                  }
+                </script>
+              </div>
+              <!-- UIDEV-386:E /-->
+
+
+              <div class="social_plugin">
+                <div class="snsBtn">
+                    <a href="#" id="nateon" class="nateon" title="네이트온쪽지"><span class="hide">네이트온쪽지</span></a>
+                    <a href="#" id="kakao" class="kakao" title="카카오톡"><span class="hide">카카오톡</span></a>
+                    <amp-social-share type="linkedin"
+                      width="25" height="25"
+                      data-param-text="Check out these AMP Examples!"
+                      data-param-url="https://ampbyexample.com/"
+                      data-param-attribution="AMPhtml">
+                    </amp-social-share>
+                    <amp-social-share width="25" height="25" type="facebook" data-param-app_id="254325784911610"></amp-social-share>
+                    <amp-social-share width="25" height="25" type="twitter"></amp-social-share>
+                </div>
+              </div>
+              <!-- NEWS-6211 / 유입버튼 추가 -->
+              <div class="view_btn_moa">
+                <a href="hotIssue.html?sq=3#ff06" class="btn_moa"><strong>핫이슈 타이틀</strong><span>모아보기</span></a>
+              </div>
+              <div class="main_banner"><a href="http://cyad1.nate.com/click.kti/mnate/wider@news_Top3?ads_no=174878&amp;cmp_no=24313&amp;img_no=259180" style="background:#f2f2f2;display: block;" target="_top"><amp-img src="http://adimg.nate.com/img/2017/08/11st17/11st17_c_0816_640x300_f2f2f2.jpg" width="320" height="150" alt="AMP"></amp-img></a>                  
+              </div>
+                <amp-ad class="i-amphtml-layout-responsive i-amphtml-layout-size-defined" data-ad-client=ca-pub-9470319806711104 data-ad-slot=7116108673 height=50 i-amphtml-layout=responsive layout=responsive type=adsense width=300><i-amphtml-sizer style=display:block;padding-top:16.6667%;></i-amphtml-sizer></amp-ad>
+
+
+
+              <div class="news_cmt">
+              <!-- 댓글AMP -->
+                  <div class="replyContent">
+                      <!-- //Start Module Write Reply -->
+                      <div class="mdu_reply_write">
+                          <form>
+                              <!-- DEV491 -->
+                              <div class="replyWrite f_clear">
+                                  <a class="go_re_list" href="#"><span class="title">댓글 <em>52</em></span></a>
+                                  <a href="#" class="myCmtBtn">MY댓글</a>
+                              </div>
+                              <!-- UIDEV520 시사  class="sisa ent sports"-->
+                              <a href="#" id="reply_banner" class="reply_banner sisa">
+                                  <img src="http://10.22.1.116:8070/trunk/_nate/media/new_trunk/images/mobile/img/common/reply_banner_sisa.jpg" alt="한숨이 깊어지는 오늘 댓글에 새로운 감정을 표현해보세요!">
+                              </a>
+                              <div class="write_btn" id="op_write" style="display: block;">
+                                  <a class="colgray">댓글을 작성해 주세요.</a>
+                              </div>
+                              <fieldset class="write" id="exp_write" style="display: none;">
+                                  <legend>댓글쓰기</legend>
+                                  <div class="textArea">
+                                      <div class="user">
+                                          <span class="name">becka****</span>
+                                          <div class="snsWrite_login">
+                                              <span class="n_on"><span>네이트</span></span>
+                                              <a href="#" class="f"><span>페이스북</span></a>
+                                              <a href="#" class="t"><span>트위터</span></a>
+                                          </div>
+                                      </div>
+                                      <textarea id="tx_reply" autofocus class="colgray" placeholder="명예훼손, 개인정보 유출, 인격권 침해, 허위사실 유포 등은 이용약관 및 관련 법률에 의해 제재를 받을 수 있습니다. 건전한 댓글문화 정착을 위해 이용에 주의를 부탁드립니다."></textarea>
+                                      <script type="text/javascript">
+                                          var textareaFunc = function(){
+                                              var textArea = document.getElementsByTagName("textArea");
+                                              for(var i=0; i<textArea.length; i++){
+                                                  if(textArea[i].className == 'colgray'){
+                                                      var textArea_txt = textArea[i].value;
+                                                      textArea[i].onfocus = function(){
+                                                          if(this.value == textArea_txt){
+                                                              this.value = '';
+                                                          }
+                                                      }
+                                                      textArea[i].onblur = function(){
+                                                          if(this.value.length == 0){ 
+                                                              this.value = textArea_txt;
+                                                          }
+                                                      }
+                                                  }
+                                              }
+                                          }
+                                          textareaFunc()
+                                      </script>
+                                  </div>
+                                  <div class="emoticon_select">
+                                      <p>댓글 이모티콘을 함께 선택해 주세요.</p>
+                                      <script type="text/javascript">
+                                          //<![CDATA[
+                                          makeEmoticonList(["<input id=\"emo1\" name=\"emoticon\" type=\"radio\" value=\"1\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo1\" >최고<\/label>","<input id=\"emo2\" name=\"emoticon\" type=\"radio\" value=\"2\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo2\" >폭소<\/label>","<input id=\"emo3\" name=\"emoticon\" type=\"radio\" value=\"3\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo3\" >경악<\/label>","<input id=\"emo4\" name=\"emoticon\" type=\"radio\" value=\"4\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo4\" >감동<\/label>","<input id=\"emo5\" name=\"emoticon\" type=\"radio\" value=\"5\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo5\" >실망<\/label>","<input id=\"emo6\" name=\"emoticon\" type=\"radio\" value=\"6\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo6\" >분노<\/label>","<input id=\"emo7\" name=\"emoticon\" type=\"radio\" value=\"7\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo7\" >안타까움 <\/label>","<input id=\"emo8\" name=\"emoticon\" type=\"radio\" value=\"8\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo8\" >놀람<\/label>","<input id=\"emo9\" name=\"emoticon\" type=\"radio\" value=\"9\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo9\" >멘붕<\/label>","<input id=\"emo10\" name=\"emoticon\" type=\"radio\" value=\"10\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo10\" >황당<\/label>","<input id=\"emo11\" name=\"emoticon\" type=\"radio\" value=\"11\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo11\" >기도<\/label>","<input id=\"emo12\" name=\"emoticon\" type=\"radio\" value=\"12\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo12\" >경고  <\/label>","<input id=\"emo13\" name=\"emoticon\" type=\"radio\" value=\"13\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo13\" >투표합시다<\/label>","<input id=\"emo14\" name=\"emoticon\" type=\"radio\" value=\"14\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo14\" >대한민국 화이팅<\/label>","<input id=\"emo15\" name=\"emoticon\" type=\"radio\" value=\"15\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo15\" >대한민국 우승<\/label>","<input id=\"emo16\" name=\"emoticon\" type=\"radio\" value=\"16\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo16\" >맥주<\/label>","<input id=\"emo17\" name=\"emoticon\" type=\"radio\" value=\"17\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo17\" >반함<\/label>","<input id=\"emo18\" name=\"emoticon\" type=\"radio\" value=\"18\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo18\" >응원<\/label>","<input id=\"emo19\" name=\"emoticon\" type=\"radio\" value=\"19\" onclick=\"olapclick('NEWRE05')\"><label for=\"emo19\" >슬픔<\/label>"]);
+                                          //]]>
+                                     </script>
+                                  </div>
+                                  
+                                  <div class="btn">
+                                      <a id="cls_wbox" href="#">취소</a>
+                                      <a href="#" class="ok"><span class="reg">등록</span></a>
+                                  </div>
+                              </fieldset>
+                              <script type="text/javascript">
+                                  //  UIDEV520
+                                  var writeForm = {
+                                      target : {
+                                          banner : document.getElementById('reply_banner'),
+                                          cancelBtn : document.getElementById('cls_wbox'),
+                                          txtAreaWrap : document.getElementById('exp_write'),
+                                          txtArea : document.getElementById('tx_reply'),
+                                          txtNoti : document.getElementById('op_write'),
+                                          emoticon : document.querySelectorAll('.emoticon_select label')
+                                      },
+                                      // 클릭시 
+                                      show : function(e){
+                                          e.preventDefault();
+                                          writeForm.target.txtNoti.style.display = 'none';
+                                          writeForm.target.txtAreaWrap.style.display = 'block';
+                                          writeForm.target.txtArea.focus();
+                                      },
+                                      close : function(){
+                                          writeForm.target.txtNoti.style.display = 'block';
+                                          writeForm.target.txtAreaWrap.style.display = 'none';
+                                      },
+                                      // 이모티콘 클릭 시
+                                      click : function(e){
+                                          var _input = e.target.previousSibling;
+                                          var isChecked = _input.checked;
+                                          if(isChecked){
+                                              e.preventDefault();       
+                                              _input.checked = false;
+                                          }
+                                      }
+                                  }
+                                  window.addEventListener('load', function(){
+                                      writeForm.target.txtNoti.onclick = writeForm.show;
+                                      writeForm.target.banner.onclick = writeForm.show;
+                                      writeForm.target.cancelBtn.onclick = writeForm.close;
+                                      for(var i=0;i<writeForm.target.emoticon.length;i++){
+                                          writeForm.target.emoticon[i].onclick = writeForm.click;
+                                      }
+                                  });
+                              </script>
+                          </form>
+                      </div>
+                      <!-- 댓글리스트 -->   
+                        <amp-list width="320" height="300" layout="responsive" src="./json/best_reply.json">
+                          <template type="amp-mustache">
+                              <div class="reply_best_wrap">
+                                <div class="reply">
+                                    <dl>
+                                        <dt>
+                                            <span class="bestReple">베플</span>
+                                            <span><a class="f" href="#">{{user}}</a></span>
+                                            <em>{{date}}</em>
+                                            <a href="#" class="report"><span>신고</span></a>
+                                        </dt>
+                                        <dd class="emoticon {{emoji}}">선택된 감정</dd>
+                                        <dd class="userText">
+                                          <a href="{{url}}">{{context}}</a>
+                                          <a href="#" class="delete"><span>삭제</span></a>
+                                          <img src="http://news.nateimg.co.kr/etc/ui/images/mobile/img/ico/reply_new.png" width="7" height="7" alt="새글" />
+                                        </dd>
+                                        <dd class="btn">
+                                            <a href="#" class="read">
+                                              <span>대댓글 <em>{{replyCnt}}</em></span>
+                                            </a>
+                                            <p class="updw">
+                                                <a href="#" class="read"><em>추천</em> <span>{{agree}}</span></a>
+                                                <a href="#" class="read"><em class="no">반대</em> <span>{{disagree}}</span></a>
+                                            </p>
+                                        </dd>
+                                    </dl>
+                                </div>
+                              </div>
+                          </template>
+                        </amp-list>
+                        <div class="adtive">
+                            <iframe name="adtive" id="adtive" src="http://networkad.nate.com/nate/mobile_news.html" data-src="http://networkad.nate.com/nate/mobile_news.html" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" width="100%" height="92"></iframe>
+                        </div>
+                        <amp-list width="320" height="300" layout="responsive" src="./json/reply.json">
+                          <template type="amp-mustache">
+                              <div class="reply_common_wrap" id="reply_more_list">
+                                <div class="reply others">
+                                    <dl>
+                                        <dt>
+                                            <span><a class="f" href="#">{{user}}</a></span>
+                                            <em>{{date}}</em>
+                                            <a href="#" class="report"><span>신고</span></a>
+                                        </dt>
+                                        {{#emoji}}
+                                        <dd class="emoticon {{emoji}}">선택된 감정</dd>
+                                        {{/emoji}}                      
+                                        <dd class="userText">
+                                          <a href="{{url}}">{{context}}</a>
+                                          <a href="#" class="delete"><span>삭제</span></a>
+                                          <img src="http://news.nateimg.co.kr/etc/ui/images/mobile/img/ico/reply_new.png" width="7" height="7" alt="새글" />
+                                        </dd>
+                                        <dd class="btn">
+                                            <a href="#" class="read">
+                                              <span>대댓글 <em>{{replyCnt}}</em></span>
+                                            </a>
+                                            <p class="updw">
+                                                <a href="#" class="read"><em>추천</em> <span>{{agree}}</span></a>
+                                                <a href="#" class="read"><em class="no">반대</em> <span>{{disagree}}</span></a>
+                                            </p>
+                                        </dd>
+                                    </dl>
+                                </div>
+                              </div>
+                          </template>
+                          <div class="replyBottom" overflow role="button" aria-label="Show more" >
+                            <div class="btn type1">
+                              <div class="moreWrap">
+                                  <div class="btn_more" id="more_btn">
+                                  <button type="button"><span>더보기</span></button>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </amp-list>      
+                  </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!-- //Responsive_left -->
+        
+        <!-- Responsive_right -->
+        <section class="rwd_right">
+          <aside class="news_point">
+            <!-- 기본 나열형 -->
+            <div class="mlt01">
+              <h2>기본 나열 형 / 모듈 이름 : 단순리스트</h2>
+              <ul class="contents1 cluster_default">
+                    <amp-list width="320" height="120" layout="responsive" src="./json/list.json">
+                      <template type="amp-mustache">
+                          <li><a href="{{url}}" class="ellipsis">{{context}}</a></li>
+                      </template>
+                    </amp-list>
+              </ul>
+            </div>
+
+  
+            <!-- NEWS-6211 / 클러스터 추가 -->
+            <div class="mlt01">
+              <div class="photoList">
+                <h2>포토&amp;영상 / c_photoList2</h2>
+                <!-- new_photoList 이미지 비율은 140x90 / 접근성 title추가 -->
+                <div class="new_photoList">
+                    <amp-list width="320" height="120" layout="responsive" src="./json/photoList.json">
+                      <template type="amp-mustache">
+                          <a href="#" class="items">
+                            <!-- slide팝업일때 -->
+                            <span class="thumb photo" title="해당 관련기사 이미지 슬라이드 팝업으로 보기">
+                            <amp-img src="{{imgs}}" width="400" height="250" layout="responsive" alt="AMP"></amp-img>
+                            </span>
+                            <span class="txt">{{context}}</span>
+                          </a>
+                      </template>
+                    </amp-list>
+                </div>
+              </div>
+            </div>
+
+            <div class="scroll_up_v2"><a href="#header">맨위로</a></div>
+            <div class="bt_banner">
+              <script type="text/javascript">
+                //<![CDATA[
+                  document.write('<script charset="euc-kr" type="text/javascript" src=http://cyad1.nate.com/js.kti/mnate/news@rt_Middle1></'+'script>');
+                //]]>
+              </script>
+            </div>
+          </aside>
+        </section>
+        <!-- //Responsive_right -->
+      </div>
+    </section>
+    <!-- //contents -->
+    <hr />  
+    <footer id="footer" role="contentinfo">
+    <!-- 로그인 전 -->
+    <div class="foot_wrap">
+        <div class="bt_wrap">
+            <button type="button"><span>네이트홈</span></button>
+            <button type="button"><span>로그인</span></button>
+            <button type="button"><span>PC버전</span></button>
+            <button type="button"><span>전체서비스</span></button>
+        </div>
+        <p class="privacy"><a href="http://news.nate.com/enews/editguide">기사배열기본방침(책임:김종훈)</a> <span class="bar">|</span>청소년보호책임:정운철</p>
+        <p class="copyright">&copy; SK Communications <span class="bar">|</span> <a class="cscenter" href="#">고객센터</a></p>
+    </div>
+</footer>
+
+
+<script script="type/javascript">
+//<![CDATA[
+    // 해당코드는 라이브와 관계 없는 코드이며, 산출물 편의상 작성한 코드 입니다.
+    // GNB 활성화
+    var pageHash = window.location.hash;
+        pageHash = pageHash.substr(1);
+        if (!isNaN(pageHash)) $('#lnbContainer .lnb a').removeClass('on').eq(pageHash).addClass('on');
+//]]>
+</script>
+  </div>
+</body>
+</html>
