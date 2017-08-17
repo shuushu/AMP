@@ -1,0 +1,148 @@
+<!doctype html>
+<html amp>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-live-list" src="https://cdn.ampproject.org/v0/amp-live-list-0.1.js"></script>
+    <link rel="canonical" href="https://ampbyexample.com/samples_templates/live_blog/">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+      <!--  검색결과로  나타나는 데이터로 추정 https://developers.google.com/search/docs/data-types/articles -->
+      <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "NewsArticle",
+          "headline": "Article headline",
+          "image": [
+            "http://lorempixel.com/400/270/?349"
+          ],
+          "datePublished": "2015-02-05T08:00:00+08:00"
+        }
+      </script>
+      <style amp-custom>
+        .carousel .slide > amp-img > img {
+          object-fit: contain;
+        }
+        amp-social-share {
+          margin-right: 8px;
+        }
+        .heading {
+          padding: 1rem;
+        }
+        .heading > #summary {
+          font-weight: 500;
+        }
+        .heading > small {
+          color: #656565;
+        }
+        .date {
+          color: #a8a3ae;
+          font-size: 12px;
+        }
+        .blog {
+          padding: 0;
+          min-width: 70%;
+          background: #fff;
+        }
+        .blog p {
+          margin: 0 16px;
+        }
+        .blog .text {
+          color: black;
+          padding-top: 0;
+        }
+        .blog .title {
+          color: white;
+          position: relative;
+          top: -48px;
+          margin: 0 16px;
+          height: 0;
+          padding-bottom: 16px;
+        }
+        .blog .social-share {
+          line-height:36px;
+          display: flex;
+          padding-bottom: 16px;
+          padding-top: 16px;
+        }
+        #live-list-update-button {
+          position: fixed;
+          top: 10px;
+          right: 16px;
+        }
+        @media (max-width: 600px) {
+          #live-list-update-button {
+            top: 60px;
+          }
+        }
+    .pagination {
+      display: inline-block;
+      padding: 0;
+    }
+    amp-live-list [pagination] nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pagination li {
+      display: inline;
+      padding: 10px;
+      list-style-type: none;
+    }
+      </style>
+
+  </head>
+  <body>
+    <section class="heading">
+      <h1>An AMP Live Blog</h1>
+      <p><small class="date">Fri July 22 2016</small></p>
+      <p><small>by Chiara Chiappini</small></p>
+      <p id="summary">This is a sample article demonstrating how to write a live blog in AMP. It demonstrates the usage of amp-live-list component which allows to create live blogs.</p>
+    </section>
+    
+    
+    <amp-live-list 
+    layout="container"
+    data-poll-interval="15000"
+    data-max-items-per-page="5"
+    id="amp-live-list-insert-blog">
+
+    <button id ="live-list-update-button" update on="tap:amp-live-list-insert-blog.update" class="ampstart-btn caps">You have updates</button>
+    <div items>
+      
+          <div id="post1" data-sort-time="20170817052646">
+            <div class="ampstart-card m1 blog">
+              <amp-img src="http://lorempixel.com/1280/853/?349"
+                  layout="responsive" width="1280" height="853">
+              </amp-img>
+              <h4 class="title">Green landscape</h4>
+              <p class="date">05:26:46</p>
+              <p class="text">A green landscape with trees.</p>
+              <p class="social-share">
+                <amp-social-share type="twitter" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                <amp-social-share type="facebook" width="45" height="33" data-attribution="254325784911610" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                <amp-social-share type="gplus" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                <amp-social-share type="email" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                <amp-social-share type="pinterest" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+              </p>
+            </div>
+          </div>
+        
+    </div>
+
+    <div pagination>
+      <nav aria-label="amp live list pagination">
+      <ul class="pagination">
+        
+        <li>1</li>
+        
+      </ul>
+      </nav>
+    </div>
+
+  </amp-live-list>
+
+  </body>
+</html>
