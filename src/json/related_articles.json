@@ -1,0 +1,24 @@
+{
+ "items": [
+   {
+     "title": "amp-carousel",
+     "url": "/components/amp-carousel/",
+     "thumbnail": "http://lorempixel.com/1280/853/?1"
+   },
+   {
+     "title": "amp-img",
+     "url": "/components/amp-img/",
+     "thumbnail": "http://lorempixel.com/1280/853/?2"
+   },
+   {
+     "title": "amp-ad",
+     "url": "/components/amp-ad/",
+     "thumbnail": "http://lorempixel.com/1280/853/?3"
+   },
+   {
+     "title": "amp-accordion",
+     "url": "/components/amp-accordion/",
+     "thumbnail": "http://lorempixel.com/1280/853/?4"
+   }
+ ]
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>amp-user-notification</title>
+	<script async custom-element="amp-user-notification" src="https://cdn.ampproject.org/v0/amp-user-notification-0.1.js"></script>
+	<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+<style amp-custom>
+  /* Center the notification content */
+  amp-user-notification > div {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>	
+</head>
+<body>
+<amp-user-notification id="my-notification"
+  layout="nodisplay"
+  data-show-if-href="https://rocky-sierra-1919.herokuapp.com/amp-user-notification/api/show?timestamp=TIMESTAMP"
+  data-dismiss-href="https://rocky-sierra-1919.herokuapp.com/amp-user-notification/api/echo/post">
+  <div>
+    This is an amp-user-notification. It uses a backend service to verify if the notification has to be shown.
+    <button on="tap:my-notification.dismiss"
+      class="ampstart-btn caps ml1">I accept</button>
+  </div>
+</amp-user-notification>
+</body>
+</html>

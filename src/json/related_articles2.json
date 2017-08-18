@@ -1,0 +1,44 @@
+{
+ "items": [
+   {
+     "title": "amp-carousel",
+     "url": "/components/amp-carousel/",
+     "thumbnail": "http://lorempixel.com/1280/853/?11"
+   },
+   {
+     "title": "amp-img",
+     "url": "/components/amp-img/",
+     "thumbnail": "http://lorempixel.com/1280/853/?12"
+   },
+   {
+     "title": "amp-ad",
+     "url": "/components/amp-ad/",
+     "thumbnail": "http://lorempixel.com/1280/853/?13"
+   },
+   {
+     "title": "amp-accordion",
+     "url": "/components/amp-accordion/",
+     "thumbnail": "http://lorempixel.com/1280/853/?14"
+   },
+   {
+     "title": "amp-carousel",
+     "url": "/components/amp-carousel/",
+     "thumbnail": "http://lorempixel.com/1280/853/?111"
+   },
+   {
+     "title": "amp-img",
+     "url": "/components/amp-img/",
+     "thumbnail": "http://lorempixel.com/1280/853/?122"
+   },
+   {
+     "title": "amp-ad",
+     "url": "/components/amp-ad/",
+     "thumbnail": "http://lorempixel.com/1280/853/?313"
+   },
+   {
+     "title": "amp-accordion",
+     "url": "/components/amp-accordion/",
+     "thumbnail": "http://lorempixel.com/1280/853/?144"
+   }   
+ ]
+}
