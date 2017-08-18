@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
-    
+    <!-- Import the `amp-image-lightbox` component -->
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
     <script async custom-element="amp-live-list" src="https://cdn.ampproject.org/v0/amp-live-list-0.1.js"></script>
     <link rel="canonical" href="https://shuushu.github.io/AMP/blog2.html">
@@ -26,8 +27,8 @@
           "height": 810,
           "width": 600
         },
-        "datePublished": "2015-02-05T08:00:00+08:00",
-        "dateModified": "2015-02-05T09:20:00+08:00",
+        "datePublished": "2017-08-18T08:00:00+08:00",
+        "dateModified": "2017-08-18T09:20:00+08:00",
         "author": {
           "@type": "Person",
           "name": "SK컴즈"
@@ -49,6 +50,7 @@
         .carousel .slide > amp-img > img {
           object-fit: contain;
         }
+        figcaption{margin: 10px 0;}
         amp-social-share {
           margin-right: 8px;
         }
@@ -71,19 +73,11 @@
           background: #fff;
         }
         .blog p {
-          margin: 0 16px;
+          margin: 10px 16px;
         }
         .blog .text {
           color: black;
           padding-top: 0;
-        }
-        .blog .title {
-          color: white;
-          position: relative;
-          top: -48px;
-          margin: 0 16px;
-          height: 0;
-          padding-bottom: 16px;
         }
         .blog .social-share {
           line-height:36px;
@@ -115,58 +109,126 @@
       padding: 10px;
       list-style-type: none;
     }
+
+
+h1, h2, figure{margin: 0;padding: 0;}
+#header{height: 43px;border-bottom: 1px solid rgb(246, 246, 246);overflow: hidden;}
+h1{overflow: hidden; float: left;}
+h2{float: right;}
+.logo{float: left;width: 45px; height: 13px; padding: 0; margin-top: 15px; margin-right: 7px;overflow: hidden; text-indent: -999em; 
+  background: url(http://nimg.nate.com/ui/uidev/images/mobile/img/common/ir_v20170404.png) 0 -633px no-repeat; 
+  background-size: 320px auto;margin-left: 15px;
+}
+.news,.sports,.ent{float: left;height: 42px;text-indent: -9999px;
+background-image: url(http://nimg.nate.com/ui/uidev/images/mobile/img/common/ir_v20170404.png);
+background-repeat: no-repeat;
+background-size: 320px auto;
+}
+.context{line-height: 1.3;}
+.news{width: 33px; background-position: -270px -561px;}
+.sports{width: 42px; background-position: -42px -589px;}
+.ent{width: 26px;margin: 0 15px 0 10px; background-position: -96px -589px;}
       </style>
 
   </head>
   <body>
+    <div id="header">
+      <h1>
+        <a href="http://m.nate.com" class="logo" alt="네이트">NATE</a>
+        <a href="#" class="news">뉴스</a>
+      </h1>
+      <h2>
+        <a href="#" class="sports">스포츠</a>
+        <a href="#" class="ent">연예</a>
+      </h2>
+    </div>
+
+
     <section class="heading">
       <h1>[AMP 테스트] 8·2대책 / 1주 - 갭투자 완전차단?…"보유세 강화 전까진 안 팔아"</h1>
-      <p><small class="date">2017-08-16</small></p>
-      <p><small>by sk컴즈</small></p>
-      <p id="summary">성북구, 서울 전세가율 1위 특수성…투자자 관망세 매물 나오지만 시세 수준 "가격조정 없이 서로 눈치만 보는중..."</p>
+      <p><small class="date">2017-08-16</small> / <small>by sk컴즈</small></p>
+
+      <amp-live-list 
+      layout="container"
+      data-poll-interval="15000"
+      data-max-items-per-page="5"
+      id="amp-live-list-insert-blog">
+
+      <button id ="live-list-update-button" update on="tap:amp-live-list-insert-blog.update" class="ampstart-btn caps">You have updates</button>
+      <div items>
+        
+            <div id="post1" data-sort-time="20170817052646">
+              <div class="ampstart-card m1 blog">
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="http://www.daelim-apt.co.kr/jsp/front/ci/160049_/images/contents/complex_main_img1.jpg"
+                          alt="Picture of a dog"
+                          title="Picture of a dog, view in lightbox"
+                          layout="responsive"
+                          width="990"
+                          height="620"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>영종하늘도시 대림-이편한세상1차 조감도</figcaption>
+                </figure>
+                <div class="context">
+                    <strong>성북구, 서울 전세가율 1위 특수성…투자자 관망세 매물 나오지만 시세 수준 "가격조정 없어"</strong>
+                    <p>
+                    (서울=뉴스1) 김종윤 기자 = "투자자들이 매도 시기를 저울질하다 차라리 팔지 않겠다고 돌아섰어요. 매물이 나오기는 하지만 평소와 다름없는 시세를 유지하고 있습니다. 보유세 강화 조치가 나오기 전까지 갭투자에 진입한 사람들의 심리변화는 크지 않을 겁니다." (길음동 A공인중개소 관계자)
+                    </p>
+                    <p>정부가 부동산 시장에서 집값 급등과 투기세력을 차단하기 위한 양도세 강화와 대출제한 등 고강도 규제를 내놓으면서 갭투자자들에겐 위기감이 고조됐다.</p>
+                    <p>하지만 보유세 강화가 빠지면서 일부 지역 갭투자자들은 안도의 한숨을 내쉬고 있다. 내년 4월까지 시간이 있어 일단 관망하며 대응하겠다는 분위기다.</p>
+                    <strong>◇국토부, 갭투자 경고…시장은 미지근</strong>
+                    <p>지난 4일 김현미 국토교통부 장관은 갭투자자에게 강력한 경고의 메시지를 전달했다. 그는 "세를 끼고 집을 사고, 또 대출을 끼고 집을 사는 것은 집을 거주하는 공간으로 보는 것이 아니라 투기수단으로 보는 신종수법"이라고 지적했다.</p>
+                    <p>정부는 갭투자를 막기 위해 내년 4월부터 2주택 이상 다주택자가 조정대상지역내 양도시 양도소득세 비율을 강화한다. 투기과열지구 다주택자에겐 LTV·DTI 비율도 30%로 대폭 한도를 낮춘다. 업계에서도 일단 갭투자자에겐 불리한 여건이 마련됐다고 입을 모았다.</p>
+                    <p>시장에서도 이번 8·2부동산 대책이 나온 직후 반응했다. 갭투자를 원하는 문의는 사라졌고 매도시기를 묻는 투자자들의 전화가 상당했다.</p>
+                    <p>길음역 인근 A공인중개소 관계자는 "대책 발표 후 앞으로 시장 상황 변화에 대한 문의가 빗발쳤다"며 "특히 부동산 호황을 틈타 갭투자에 처음 진입한 30∼40대 불안감이 컸다"고 당시 분위기를 전했다.</p>
+                    <p>성북구는 서울에서도 전세가율이 높아 '갭투자 성지'로 불린다. 부동산114에 따르면 지난달 기준 성북구 전세가율은 83.33%로 서울에서 가장 높은 수치를 기록했다. 전세가율이 고공행진을 이어가면서 부산 등 지방에서 원정 온 투자자들이 여러 채를 매입했다는 후문이다.</p>
+                    <p>다만 처음 대책 발표 초기 혼란스럽던 분위기는 차츰  회복하고 있었다. 투자자들은 양도세 부담 대신 월세(반전세 투자자) 수익을 챙기겠다는 의도다. 또 가족 명의로 투자에 나선 이들도 상당해 이번 대책에 큰 부담을 느끼지 않고 있다. 이는 기존 투자자뿐 아니라 실수요가 튼튼하게 받쳐주는 성북구 특수성이 반영된 탓이다.</p>
+                    <p>실제로 집주인들이 매물을 내놓고 있지만 시세와 비슷한 수준을 유지하고 있다. 서울시부동산정보광장에 따르면 지난달 길음뉴타운 6단지 전용59㎡는 4억8500만원에 거래됐다. 현재 시장에 나오는 매물은 5억원 이상이다.</p>
+                    <p>B공인중개소 관계자는 "집주인들은 호가를 낮춰 매물을 내놓지 않고 있다"며 "투자자들도 손해를 보면서 거래를 할 정도로 급박함을 느끼지 않고 있다"고 귀띔했다.</p>
+                </div>
+
+
+                <p class="date">05:26:46</p>
+                <p class="text">A green landscape with trees.</p>
+                <p class="social-share">
+                  <amp-social-share type="twitter" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="facebook" width="45" height="33" data-attribution="254325784911610" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="gplus" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="email" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="pinterest" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                </p>
+              </div>
+            </div>        
+      </div>
+
+      <div pagination>
+        <nav aria-label="amp live list pagination">
+        <ul class="pagination">
+          
+          <li>1</li>
+          
+        </ul>
+        </nav>
+      </div>
+
+    </amp-live-list>
+
+
+
+
+
+
+
+
+
+
     </section>
     
     
-    <amp-live-list 
-    layout="container"
-    data-poll-interval="15000"
-    data-max-items-per-page="5"
-    id="amp-live-list-insert-blog">
 
-    <button id ="live-list-update-button" update on="tap:amp-live-list-insert-blog.update" class="ampstart-btn caps">You have updates</button>
-    <div items>
-      
-          <div id="post1" data-sort-time="20170817052646">
-            <div class="ampstart-card m1 blog">
-              <amp-img src="http://lorempixel.com/1280/853/?349"
-                  layout="responsive" width="1280" height="853">
-              </amp-img>
-              <h4 class="title">Green landscape</h4>
-              <p class="date">05:26:46</p>
-              <p class="text">A green landscape with trees.</p>
-              <p class="social-share">
-                <amp-social-share type="twitter" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
-                <amp-social-share type="facebook" width="45" height="33" data-attribution="254325784911610" data-param-url="AMPDOC_URL#post1"></amp-social-share>
-                <amp-social-share type="gplus" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
-                <amp-social-share type="email" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
-                <amp-social-share type="pinterest" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
-              </p>
-            </div>
-          </div>
-        
-    </div>
-
-    <div pagination>
-      <nav aria-label="amp live list pagination">
-      <ul class="pagination">
-        
-        <li>1</li>
-        
-      </ul>
-      </nav>
-    </div>
-
-  </amp-live-list>
 
   </body>
 </html>
