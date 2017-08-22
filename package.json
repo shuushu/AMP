@@ -13,7 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "app": "browser-sync start --proxy localhost:5000 --files \"src/*.html\"",
-    "test": "browser-sync start --server --files \"src/*.html\"",
+    "test": "browser-sync start --server --files \"src/*.html\" --port 80",
     "dev": "nodemon server/db.js"
   },
   "author": "",

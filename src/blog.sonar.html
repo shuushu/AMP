@@ -1,0 +1,416 @@
+<!doctype html>
+<html amp>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <!-- Import the `amp-image-lightbox` component -->
+    <script async custom-element="amp-image-lightbox" src="https://cdn.ampproject.org/v0/amp-image-lightbox-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-live-list" src="https://cdn.ampproject.org/v0/amp-live-list-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>   
+    <script async custom-element="amp-facebook-comments" src="https://cdn.ampproject.org/v0/amp-facebook-comments-0.1.js"></script>
+    <script async custom-element="amp-fx-flying-carpet" src="https://cdn.ampproject.org/v0/amp-fx-flying-carpet-0.1.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <link rel="canonical" href="blog.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+      <!--  검색결과로  나타나는 데이터로 추정 https://developers.google.com/search/docs/data-types/articles -->
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://www.google.co.kr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjjtO_84enVAhVFi7wKHaJvBZcQFggoMAA&url=https%3A%2F%2Fwww.sonarqube.org%2F&usg=AFQjCNFOLP-IedvA8yxVXFBpwbhRf5SLFw"
+        },
+        "headline": "Article headline",
+        
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://s3.amazonaws.com/oodles-technologies1/blog-images/164b3353-b025-4328-921d-f807a6844063.jpeg",
+          "height": 810,
+          "width": 423
+        },
+        "datePublished": "2017-08-18T08:00:00+08:00",
+        "dateModified": "2017-08-18T09:20:00+08:00",
+        "author": {
+          "@type": "Person",
+          "name": "SK컴즈"
+        },
+         "publisher": {
+          "@type": "Organization",
+          "name": "SK컴즈 DEV",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://upload.wikimedia.org/wikipedia/ko/thumb/9/9c/Nate_2009_logo.svg/1024px-Nate_2009_logo.svg.png",
+            "width": 600,
+            "height": 60
+          }
+        },
+        "description": "A most wonderful article"
+      }
+      </script>
+      <style amp-custom>
+        .carousel .slide > amp-img > img {
+          object-fit: contain;
+        }
+        figcaption{margin: 10px 0;}
+        amp-social-share {
+          margin-right: 8px;
+        }
+        .heading {
+          padding: 1rem;
+        }
+        .heading > #summary {
+          font-weight: 500;
+        }
+        .heading > small {
+          color: #656565;
+        }
+        .date {
+          color: #a8a3ae;
+          font-size: 12px;
+        }
+        .blog {
+          padding: 0;
+          min-width: 70%;
+          background: #fff;
+        }
+        .blog p {
+          margin: 10px 16px;
+        }
+        .blog .text {
+          color: black;
+          padding-top: 0;
+        }
+        .blog .social-share {
+          line-height:36px;
+          display: flex;
+          padding-bottom: 16px;
+          padding-top: 16px;
+        }
+        #live-list-update-button {
+          position: fixed;
+          top: 10px;
+          right: 16px;
+        }
+        @media (max-width: 600px) {
+          #live-list-update-button {
+            top: 60px;
+          }
+        }
+    .pagination {
+      display: inline-block;
+      padding: 0;
+    }
+    amp-live-list [pagination] nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pagination li {
+      display: inline;
+      padding: 10px;
+      list-style-type: none;
+    }
+  .related {
+    background-color: #f5f5f5;
+    margin: 1rem;
+    display: flex;
+    color: #111;
+    padding: 0;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 1px -1px rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    text-decoration: none;
+  }
+  .related > span {
+    font-weight: 400;
+    margin: 8px;
+  }
+  .related:hover {
+    background-color: #ccc;
+  }
+  amp-user-notification {
+    padding: 8px;
+    background: #bbb;
+    text-align: center;
+    color: white;
+  }
+
+h1, h2, figure{margin: 0;padding: 0;}
+#header{height: 43px;border-bottom: 1px solid rgb(246, 246, 246);overflow: hidden;}
+h1{overflow: hidden; float: left;}
+.util{float: right;}
+.logo{float: left;width: 45px; height: 13px; padding: 0; margin-top: 15px; margin-right: 7px;overflow: hidden; text-indent: -999em; 
+  background: url(http://nimg.nate.com/ui/uidev/images/mobile/img/common/ir_v20170404.png) 0 -633px no-repeat; 
+  background-size: 320px auto;margin-left: 15px;
+}
+.news,.sports,.ent{float: left;height: 42px;text-indent: -9999px;
+background-image: url(http://nimg.nate.com/ui/uidev/images/mobile/img/common/ir_v20170404.png);
+background-repeat: no-repeat;
+background-size: 320px auto;
+}
+.context{line-height: 1.3;}
+.news{width: 33px; background-position: -270px -561px;}
+.sports{width: 42px; background-position: -42px -589px;}
+.ent{width: 26px;margin: 0 15px 0 10px; background-position: -96px -589px;}
+.fly_img{background-color: #000;margin: 0 -1rem;}
+      </style>
+
+  </head>
+  <body>
+
+
+
+    <div id="header">
+      <h1>
+        <a href="http://m.nate.com" class="logo">NATE 네이트</a>
+        <a href="#" class="news">뉴스</a>
+      </h1>
+      <div class="util">
+        <a href="#" class="sports">스포츠</a>
+        <a href="#" class="ent">연예</a>
+      </div>
+    </div>
+
+
+    <section class="heading">
+      <h1>SonarQube 정적분석 툴 설치 및 사용하기</h1>
+      <p><small class="date">2017-08-22</small> / <small>by sk컴즈 UIDEV</small></p>
+      
+
+      <amp-live-list 
+      layout="container"
+      data-poll-interval="15000"
+      data-max-items-per-page="5"
+      id="amp-live-list-insert-blog">
+
+      <button id ="live-list-update-button" update on="tap:amp-live-list-insert-blog.update" class="ampstart-btn caps">You have updates</button>
+      <div items>     
+            <div id="post1" data-sort-time="20170817052646">
+              <div class="ampstart-card m1 blog">
+                <h5>CSS, JS, HTML 문법 검사 SonarQube! 적은 시간과 비용으로 노력을 줄이고 품질을 향상 시킨다.</h5>
+                <h3>1-1. Java 설치하기</h3>
+                <p>아래의 링크를 통해서 최신 버전의 Java를 설치하세요. <a href="http://java.com/ko/download/" target="_blank">http://java.com/ko/download/</a></p>
+                <h3>2-1. SonarQube 설치하기.</h3>
+                <p>
+                    http://www.sonarqube.org/ ◀링크에서 SonarQube를 다운로드 받습니다. <br>
+
+                    sonarqube/conf/sonar.properties를 수정합니다<br>
+
+                    mysql을 DB로 사용하기때문에 mysql쪽 주석만 풀어서 사용하면 됩니다.<br>
+
+                    url주석을 푼후, 알맞게 username과 password를 수정해줍니다.<br>
+
+                    이때 username과 password는 mysql 접속 정보를 입력합니다.<br>
+
+                    그리고 mysql 에 "sonar" schema가 생성되어 있어야 정상적으로 연결됩니다.
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/_irClpEIS4kqeMeZxxw6WnF__THiOJhD_bcwJW58-MYorbZzR0FXtAvwW4HkCvqMcTlXg7v6bsCgPjD7-pVI3Om_xdqlr9omHlK3Fq18Vz0myJCN5uuyAXJ5pR7c9j9Wt4F7AI4sy0tODwr6uM0UmKrKDURbUrm7tBZ3lZ0zV_HQoOjDDoK0VQsNz1ktNu6IiBwt7NpXX1_wWrnZ1oHu7iu9b17zk9Z8goSV-GB-8KzmHYsCddubJr9Rdsyq2FDpugYBgjAf8U-dbmTXYJdWKde1RJHsFu6NLEsoxFlhdEEAp3FKgxhVtL9qaUVfs3A5rs0VyeMRpPc6Lhm1WhTFlN2d05WdI6QK7vax6r170gcE9dUdRbJ8W5biO3wzJFnm9_S24SNo8DcoL_BPLqZnGa8zNA2sK50Omq8aVozSsZ9e5M-utxGZDPlfPEQoCkei3SwcoyQiHaLS38thjzv_pU013_SJsJrNQiKX4SljyIDBv4h_PFOLWXhWuJro1WSHzd3EBGaaN7lX96ymjL8kvABvU4sO8yPuYXifbT8ed-92rbK6buYuNEG-Xh0u5kzI1peMapJbkZvDUhP-yNIZGqEirUPZ2x4_5FgitKRh9feSQw3Rw9nQ=w806-h291-no"
+                          alt="캡쳐화면"
+                          title="소나큐브 jdbc 셋팅화면"
+                          layout="responsive"
+                          width="806"
+                          height="291"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>소나큐브 jdbc 셋팅화면</figcaption>
+                </figure>
+
+                </p>
+                <h3>2-2. Sonar Runner  다운로드</h3>
+                <p>
+                https://docs.sonarqube.org/display/SONARQUBE52/Installing+and+Configuring+SonarQube+Scanner <br>
+                다운로드 받은 zip 파일을 원하는 경로를 지정하여 압축을 해제합니다. <br>
+                <설치 디렉토리>/conf/sonar-runner.properties 파일을 열어서 자신의 환경에 맞게 수정합니다.<br>
+                동일한 PC에 SonarQube를 설치했고 기본 설정을 변경하지 않았으면, sonar.jdbc.* 속성의 주석을 해제하는 정도가 할일의 전부입니다.<br>
+                저는 SonarQube 서버를 같은 PC에 설치했고 MySQL을 사용하고 있기 때문에 아래과 같이 설정을 완료했습니다.<br>
+                SONAR_RUNNER_HOME 시스템 환경변수를 만들고 그 값으로 [설치 디렉토리]를 설정합니다.<br>
+                [설치 디랙토리]\bin 디렉토리(%SONAR_RUNNER_HOME%\bin)를 path에 추가합니다. 이제 SonarQube Runner의 설치가 완료되었습니다.                
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/etCZ7gkr7p0M5XcRJxetxH5oaQJBolVmqb0CdIup3i8xlbzjBwPe3i38ohOgFAkbCVo2ebyedsCDvYtixicRwBq1SQp715sO2KrKahT7WYDdbGRxchTUhIaR0bmB2MjNT_f464a1DQ5EA7asfQ8Ovd2APaTztFKTYzQI5h5QQrXr4MIfRxLHwWDt--4Oo6qUxo36FmlN1cFUglL-1aslxxn5qFMWD7nL0Dr3uKJLmUzAhDJ2SV-XCoMLiHSDbuNoVw2F4_tkCs6fg_bVh6yiU8RagjDknAG784bHa1HoOHEyLn2ti96d9LposxOV3PWbEP2S1UNp3o5NXVVa9PstyUQS3T86TXH0Fuy_JbnvLXSc3i8qOgAxzmaoVnDLq0sGglvEu37St68wen2h9G9l8-2EKVuzITsD7U5hTux8VrPxwsPjqxiVT7A67fxUaw99lU_BMYckfd-FXD83x4sfBHomPlhdXPVp2ZMBZp260ZAxF4MV3vLVzIaVGlzEuo-nR_QgZihcKuXbrYENMOOGkI90Su2BFyhlr7aRjMC-1j3cuxx4MrCmR3tBOG2lclRrCv1ePrE8_LpjQEGI2keYWdbRM7WDuhOxtH4gDWvsjTvcstqA4wGn=w748-h422-no"
+                          alt="캡쳐화면2"
+                          title="소나큐브 jdbc 셋팅화면 2"
+                          layout="responsive"
+                          width="748"
+                          height="422"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>소나큐브 jdbc 셋팅화면2</figcaption>
+                </figure>
+                </p>
+                <h3>2-3 소나큐브 실행후 열어보기 </h3>
+                <p>소나큐브 디렉토리 / bin/폴더내에 자신에 맞는 운영체제 폴더로 이동합니다. 후 bat파일을 돌리시면 프롬트프가 뜨고, 실행됩니다.</p>
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/IS1_mIlN4f7xW8TYeSD5fLRxTZvUt8OTSp4CGc9yK0W5HC7KrIM7QGedagIN4QSNHu8ksSWzkjvrivioDk-wouPtmQnIzpxuHBKk5hWPh8rJci6dV1ApgZWyJMZ21GHPLMIHEbtIBTTnf-dTJWIhX7ZKaRrnf1ygXVc4Ey2HG6htHzP81-_w4vliIJW0gXyqAHiRrnWJ1xtmvQS14rJ4mZ-7oQkgv-dhTf526PZygLY1-pVELyOzQOml-z-cMuMJblwwvXAEtM7i5qdg8rmsJc8hKRiFQxgI91jFWxOkKeDoLXGOYHTpa-hDZQDRdMq8UodFuFWYkNkB_vvd75dgqbqSDys4vhLrxWcCDsMJ08NZrMXHDwuLB6EtWzjOHqEsMKoYFFooLD-ddmoVxXDKuzwERIk29Desp9J8Bk_N0jiVFm_7oTBQLuj2hg4_gdjCMyAPjZk-ghGjFb9EawOmi-16JzmI9oq9_99sznk29wEENpTjHMY7Daut__iuu3KiuulplMFliod9Pmp_diiGgTTiYzylG66wJS8VHAqvIMBf7rHCRGQnQ_N6ouRAYEEryyAQfgWqlJEH9VsQbMC9qM7PMC5S6teArN0UP0nf7an9ayCnMqzo=w676-h444-no"
+                          alt="cmd결과화면"
+                          title="cmd 결과"
+                          layout="responsive"
+                          width="676"
+                          height="444"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>프롬트프 실행화면</figcaption>
+                </figure>
+                <p>그후 설정한 호스트와 포트로 접속하여 데시보드가 뜨는지 확인합니다.</p>
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/GJtNeO6NaSoO-Ls2S6FHXB3MSJQjvx1cuav7T5qhno8rT6vIjuoZNcL5ZVFFEVKmC-YQFjSq4-McYFJhtpNyMG0wqDImj-wihH3jOCZc_0QeXE0uhNXWmyos4kl1yR7aYFjkPVPkPZ5fToCnPVvBLVaP1QIkz11kAWSiAE5dgXRmhZvlb2EnrTHfpkreAM60jiRflgapx8tOCxDs6ii2AyL6p4RrfHAmVTZoKL3qk0LKWbM_SufsVqwOM5jvte7bW6BQSdI9wXEZmnTYgsP2o0NyyopGpLYVnCH-6jyWXWADEMSUVUAgn8X2lbUqLeFZ2GICwnJtNbKC1dKOz1fr6kWqYPr_gT3bC7Av61Pr7qspQH7bwjfA5AvOZ7XUDEl9xkSh-Pzwz0kr1S1TFZYKnZxfvcfGHVq7dFGJuJyDpkoj8NO2AH8tfI5Iyl6poso4ovx-6iXngd4QZ81w-CpdkjYQDrxnwF3TJ0SgMLJmArIMc-Q1iCI3qibCNy_EtSMfFY4vde0n1O6E5YDBp7HXak_pq5-RlbR9QR_alnteCDQpcYFt4ZfJR6YdiHuxJPMCpsZYYoUXsH2rfB_QtnXTYuOrzbNQaJx78WZkksu-qSVl5SIymQO_=w936-h723-no"
+                          alt="소나큐브 대쉬 화면"
+                          title="sonarqube dash view"
+                          layout="responsive"
+                          width="676"
+                          height="444"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>소나큐브 대쉬 화면</figcaption>
+                </figure>
+                <h2>프로젝트 분석</h2>
+                <h3>1-1 필요한 플러그인 추가</h3>
+                <p>sonarqube/extensions/plugins 폴더아래 플러그인을 넣습니다. <br> 제가 추가한 플러그인을 첨부합니다. plugins.zip (추가후 소나큐브 재실행)</p>
+                <h3>1-2 rule import </h3>
+                <p>
+                우리팀에서 정해놓은 룰을 import 합니다 <br>
+                Configuration --> Quality Profiles  <br>
+                Restore Profile (우측 상단에 create옆 하단화살표표시클릭, 로그인 해야 보입니다. 계정 : admin/admin)<br>
+                하단 export 파일들을 불러옵니다 (총6개)
+                </p>
+                <ul>
+                    <li>web-sonar-way-09975.xml</li>
+                    <li>less-sonarqube-way-37269.xml</li>
+                    <li>json-sonarqube-way-25598.xml</li>
+                    <li>js-sonar-way-09262.xml</li>
+                    <li>java-sonar-way-75002.xml</li>
+                    <li>css-sonarqube-way-28648.xml</li>
+                </ul>
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/F76T5SzixojviCIeRkkb6o7ZvJaekRD7J6EkdbOQOybKBC_sh8heCoeEH9vHS9QXngd8e8p5o1kVYcThaOo7yYJRshaEiuze8TdSe4Wk3pLuhjdRPqnSVbjU7NZxfVBWY022vdY_Jfou81dQu2xrJ-n6EP-wuFFvGvCHcVrBJj02gALIbwv0B1jYNhSB2wYNJazMotNJQZ3dyZ5R_Rak-J-lGh-t41HJkaRnU0qufuzO5c5h40G2ufyUiq5dDt0EG-TqTLCYEGMHGJnNkbzXJN3lJAsdy4MLrBWmqI2DAKHAWlKN_-65GlYlJjh3hRvystYWp656V_tk2XemVjBI01GcawM1Fl41tUaQW_xWgMkZmLdjGZ7iAMwA2dXCce9gVVQKbjBhmYnZ8haY6idSLzo0hC2F7eZCPBdNv3zkOTSOH1-sVPToDPsveyGB2OhdYGImlBRpT7N3uF7Satdj1aNbnzK5VtQu1iA6Z-4G4NdlCID9MkO64giFtIQ695LWKFuB_7-gHSK2w18cnbEfTjJawgmOHOv_mXNPqmjHZL-9pV4fT8K3Hf6UuTb8sYEme54Yy5PBjhDXlzwwIGJqPt16Hhut67mmafp0qz0BzuxPYjTgIV-u=w1344-h808-no"
+                          alt="소나큐브 룰 셋팅"
+                          title="소나큐브 룰 셋팅"
+                          layout="responsive"
+                          width="1344"
+                          height="808"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>소나큐브 룰 셋팅</figcaption>
+                </figure>                
+                <h3>1-3 sonar-runner 실행</h3>
+                <p>
+                   A. 소나러너를 돌릴 산출물 디렉토리에 sonnar-project.properies 파일(소나러너디렉토리에 sample-sonar-project.properies 복사후 이름바꿔서 사용)을 넣고, Key값 projectName, Version등을 입력합니다. <br><br>
+
+                  그외의 추가 설정 값 : <br>
+                  sources : 소스를 돌릴 폴더, 파일을 지정합니다. 모두 돌리고 싶을땐 . 으로 설정<br>
+                  sources : 돌리지 않을 소스, 제외소스를 지정합니다.(라이브러리나 테스트 코드 등..)<br><br>
+
+                  B. 프롬트프(cmd)로 해당 디렉토리에 이동(cd /디렉토리위치) 하여 sonar-runner를 실행합니다(SonarQube 서버는 이미 동작 중이어야 합니다).
+                </p>
+                <figure>
+                  <amp-img on="tap:lightbox1"
+                          role="button"
+                          tabindex="0"
+                          src="https://lh3.googleusercontent.com/e8DnsYlAZVD7slxVgXfMOJ6yu3eG8AkXSajk9ye3pEDt1jpVe4MWpm68VyQSQAMvCYiAl9ig_7uyvf66Fltl_XTqC2uT1oXjxRCiCJSUMmyvt9ofqHPrQTZKfDKd5qDDSLDtdHh5u9A2hHDLOK4PiR7nKnmJj51jYdFCGhGcG3wls35wGbaftegpb5Ykz2AFy0utFMuIjFbezeONYpRZE8KPM7JMPlsTKs4EZS-gLy3yq_1I4IvhxWwXbykptGC8wIVXHL6P356s8XDxv1_lJp9xrBjzGJiqbE6fw-pLn_XUgNKX4xrPDAVZ4brM6kcHlcP8gAKM8csKx6cUVrqwXU5O8Te9K5FGwaKOBpEaTZ4r7WX-c8J62rYlbijBzCkQ5flhBxBVymZnpKPSYXCOx-mqfRn8W4gwd1jFHCK2yxIpHUYptZ9-LEh6NIV01Rlvt4lA9LdWwY2nxEkJeFXWShOkwubqcMgL5RBos1QUSFNbmALbw4qhTYjjSKdaA13ByWYSmpTCX1CI1BvD5Z1af61k71bXuf4cSNBK3rXgCWodbdzBQcIY3-ZgSbeOhRRqXPgirASgt5UrOWJqifnTyDipqqA0A8XO0O0nkXd8EI3oJqhsGa9k=w796-h269-no"
+                          alt="소나큐브 검사 타겟 설정"
+                          title="소나큐브 검사 타겟 설정"
+                          layout="responsive"
+                          width="796"
+                          height="269"></amp-img>
+                  <amp-image-lightbox id="lightbox1" layout="nodisplay"></amp-image-lightbox>
+                  <figcaption>소나큐브 검사 타겟 설정</figcaption>
+                </figure>                  
+                <h2>SonarQube 품질 기준</h2>
+                <p>
+                  UI산출물 품질을 위해 SonarQube로 신규 서비스에 대해서 점검을 실시한다. <br><br>
+
+                  소나큐브 검증 결과 별 목표<br>
+                  Bug = 0<br>
+                  Vulnerability = 0<br>
+                  Maintainability Rating = A level ( Technical Debt  5% 이하 )
+                </p>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <amp-fx-flying-carpet height="150" class="fly_img">
+                  <amp-img src="http://lorempixel.com/640/800/?349"
+                    width="640"
+                    height="800"
+                    alt="an image"></amp-img>
+                </amp-fx-flying-carpet>
+
+                <amp-facebook-comments width=486 height=657
+                    layout="responsive"
+                    data-numposts="5"
+                    data-href="http://news.nate.com/view/20170820n02052">
+                </amp-facebook-comments>
+
+
+                <p class="date">05:26:46</p>
+                <p class="text">A green landscape with trees.</p>
+                <p class="social-share">
+                  <amp-social-share type="twitter" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="facebook" width="45" height="33" data-attribution="254325784911610" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="gplus" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="email" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                  <amp-social-share type="pinterest" width="45" height="33" data-param-url="AMPDOC_URL#post1"></amp-social-share>
+                </p>
+              </div>
+            </div>        
+      </div>
+
+
+      <div pagination>
+        <nav aria-label="amp live list pagination">
+        <ul class="pagination">
+          
+          <li>1</li>
+          
+        </ul>
+        </nav>
+      </div>
+
+    </amp-live-list>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    
+    
+
+
+  </body>
+</html>
